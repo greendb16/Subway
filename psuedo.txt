@@ -1,0 +1,38 @@
+declare boolean roomDoor
+declare boolean elevator
+declare string callButton
+declare int floorButton
+declare boolean lobbyDoor
+declare boolean elevatorDoor
+declare boolean exitDoor
+declare int carSpeed
+declare boolean subwayDoor
+
+
+if roomDoor = Closed
+	than 
+		open room door
+		walk through roomDoor
+	
+	else 
+		walk through roomDoor
+
+Turn 90%  left
+walk forward
+while rightWall = true
+	do keep walking
+	
+	
+turn 90% right
+walk 3 steps
+stop
+
+if elevator = closed && callButton != illuminated
+	than depress callButton
+	
+while elevator door = closed
+ do stand still
+ 
+ endWhile
+ 
+ 
