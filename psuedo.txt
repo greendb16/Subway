@@ -5,8 +5,13 @@ declare int floorButton
 declare boolean lobbyDoor
 declare boolean elevatorDoor
 declare boolean exitDoor
-declare int carSpeed
+declare string roadStatus
 declare boolean subwayDoor
+declare boolean otherDoor
+declare boolean rightWall
+declare boolean path
+closed = true
+open = false
 
 
 if roomDoor = Closed
@@ -21,18 +26,94 @@ Turn 90%  left
 walk forward
 while rightWall = true
 	do keep walking
-	
+endWhile	
 	
 turn 90% right
 walk 3 steps
 stop
 
-if elevator = closed && callButton != illuminated
+if elevatorDoor = closed && callButton != illuminated
 	than depress callButton
 	
-while elevator door = closed
+while elevatorDoor = closed
  do stand still
  
  endWhile
+ 
+if elevatorDoor = open
+	then enter elevator
+
+turn 90 degrees right
+walk 1 step
+turn 90 degrees right
+
+input floorButton 
+
+if floorButton(0-4)
+	then
+		switch floorButton
+		0= print "to far go bak up" return to input floorButton
+		1= print "you did it !" exit elevator
+		2= print "wrong floor try again" return to input floorButton 
+		3= print "wrong floor try again" return to input floorButton
+		4= print "you didnt move, try again" return to input floorButton
+	else
+		Print "you missed the button, try again" return to input floorButton
+		
+take 2 steps forward
+turn 90 degrees right
+
+while path = unobstructed
+	do walk forward
+endwhile
+
+if lobbyDoor = closed
+	then open door and take 2 steps forward
+	
+	else walk 2 steps past lobbyDoor
+
+turn 90 degrees right
+while path = unobstructed 
+	walk forward
+endwhile
+
+if otherDoor = closed
+	then open door and walk through
+	
+	else continue walking
+	
+turn 90 degrees left
+walk down stairs
+
+if exitDoor = closed
+	then open door and walk through
+	
+	else contine walking
+
+input roadStatus
+	switch roadStatus
+	empty = cross road to sidewalk
+	stoped cars = cross road to crosswalk
+	slow cars = run across road to side walk
+	fast cars = wait 5 seconds and retest
+	endswitch
+
+while subwayDoor = <2 feet away
+	do take 1 step
+endWhile
+
+turn 90 degrees right
+
+if subwayDoor = open
+	then walk through subwayDoor
+	
+	else open subwayDoor 
+		walk through subwayDoor
+
+
+
+
+
+
  
  
